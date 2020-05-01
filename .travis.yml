@@ -3,20 +3,20 @@ services:
   - docker
 
 before install:
-  - docker build -t gregvinton1980/react-test -f ./client/Dockerfile.dev .
+  - docker build -t gregvinton80/react-test -f ./client/Dockerfile.dev .
 
 script:
-  - docker run -e CI=true gregvinton1980/react-test npm test
+  - docker run -e CI=true gregvinton80/react-test npm test
 
 after_success:
-  - docker build -t gregvinton1980/multi-client ./client
-  - docker build -t gregvinton1980/multi-nginx ./nginx
-  - docker build -t gregvinton1980/multi-server ./server
-  - docker build -t gregvinton1980/multi-worker ./worker
+  - docker build -t gregvinton80/multi-client ./client
+  - docker build -t gregvinton80/multi-nginx ./nginx
+  - docker build -t gregvinton80/multi-server ./server
+  - docker build -t gregvinton80/multi-worker ./worker
 
 - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
-- docker push gregvinton1980/multi-client
-- docker push gregvinton1980/multi-nginx
-- docker push gregvinton1980/multi-server
-- docker push gregvinton1980/multi-worker
+- docker push gregvinton80/multi-client
+- docker push gregvinton80/multi-nginx
+- docker push gregvinton80/multi-server
+- docker push gregvinton80/multi-worker
