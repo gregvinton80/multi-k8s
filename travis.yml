@@ -9,15 +9,15 @@ script:
   - docker run gregvinton1980/react-test npm test -- --coverage
 
 after_success:
-  - docker build -t gregvinton190/multi-client ./client
-  - docker build -t gregvinton190/multi-nginx ./nginx
-  - docker build -t gregvinton190/multi-server ./server
-  - docker build -t gregvinton190/multi-worker ./worker
+  - docker build -t gregvinton1980/multi-client ./client
+  - docker build -t gregvinton1980/multi-nginx ./nginx
+  - docker build -t gregvinton1980/multi-server ./server
+  - docker build -t gregvinton1980/multi-worker ./worker
 
 - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
-- docker push gregvinton190/multi-client
-- docker push gregvinton190/multi-nginx
-- docker push gregvinton190/multi-server
-- docker push gregvinton190/multi-worker
+- docker push gregvinton1980/multi-client
+- docker push gregvinton1980/multi-nginx
+- docker push gregvinton1980/multi-server
+- docker push gregvinton1980/multi-worker
 
