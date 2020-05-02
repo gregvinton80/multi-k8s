@@ -4,20 +4,20 @@ services:
   - docker
 
 before_install:
-  - docker build -t gregvinton/app-test -f ./client/Dockerfile.dev ./client
+  - docker build -t gregvinton80/app-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true gregvinton/app-test npm test
+  - docker run -e CI=true gregvinton80/app-test npm test
 
 after_success:
-  - docker build -t gregvinton/multi-client ./client
-  - docker build -t gregvinton/multi-nginx ./nginx
-  - docker build -t gregvinton/multi-server ./server
-  - docker build -t gregvinton/multi-worker ./worker
+  - docker build -t gregvinton80/multi-client ./client
+  - docker build -t gregvinton80/multi-nginx ./nginx
+  - docker build -t gregvinton80/multi-server ./server
+  - docker build -t gregvinton80/multi-worker ./worker
 
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
 
-  - docker push gregvinton/multi-client
-  - docker push gregvinton/multi-nginx
-  - docker push gregvinton/multi-server
-  - docker push gregvinton/multi-worker
+  - docker push gregvinton80/multi-client
+  - docker push gregvinton80/multi-nginx
+  - docker push gregvinton80/multi-server
+  - docker push gregvinton80/multi-worker
