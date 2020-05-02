@@ -15,7 +15,7 @@ after_success:
   - docker build -t gregvinton80/multi-server ./server
   - docker build -t gregvinton80/multi-worker ./worker
 
-  - echo "$DOCKER_PASSWORD" | docker login --username gregvinton80 --password-stdin
+  - echo "$DOCKER_PASS" | docker login --username "$DOCKER_USER" --password-stdin
 
   - docker push gregvinton80/multi-client
   - docker push gregvinton80/multi-nginx
